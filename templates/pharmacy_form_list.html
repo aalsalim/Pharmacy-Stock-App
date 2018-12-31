@@ -1,0 +1,12 @@
+<div class="form-group">
+    <label for="Pharmacy">Pharmacy:</label>
+    <select class="form-control" name="pharmacy">
+        {% for c in pharmacies %}
+            {% if medication and medication.pharmacy_id == c.id %} 
+            <option id="{{c.id}}" value="{{c.id}}" selected>{{c.name}}</option>
+            {% else %}
+            <option id="{{c.id}}" value="{{c.id}}">{{c.name}}</option>
+            {% endif %}
+        {% endfor %}
+    </select>
+</div>

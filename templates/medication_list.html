@@ -1,0 +1,44 @@
+<ul class="list-group">
+	{% if medications and quantity > 0 %}
+	    {% for i in medications %}
+	    <li class="list-group-item">
+			<div class="row">
+				<div class="col-md-12">
+				<!-- <img class="img-thumbnail pull-left" src="http://placehold.it/150" alt="image placeholder" /> -->
+					<span class="name">
+						<a href="{{ url_for('showMedication', pharmacy_id=i.pharmacy_id, medication_id=i.id) }}" >
+							<h3>{{i.name}}</a><br><small>({{ i.pharmacy.name }})</small>
+							{% if i.user_id == session.user_id %}
+							<div class="editdeletepane pull-right">
+								<a href="{{ url_for('editMedication', pharmacy_id=i.pharmacy_id, medication_id=i.id) }}">
+									<button class="btn btn-default edit">
+										<span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+											Edit
+									</button>
+								</a>
+								<a href="{{ url_for('deleteMedication', pharmacy_id=i.pharmacy_id, medication_id=i.id) }}">
+									<button class="btn btn-danger delete">
+										<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+											Delete
+									</button>
+								</a>
+							</div>
+							{% endif %}
+						</h3>
+					</span>
+					{% if creator %}
+					<div>
+						Created By:  {{ creator.email }}
+					{% endif %}
+				</div>
+			</div>
+	    </li>
+	    {% endfor %}
+	{% else %}
+	<ul>
+	    <li class="list-group-item">
+	        You currently have no Medications.
+	    </li>
+	</ul>
+	{% endif %}
+</ul>
