@@ -221,7 +221,7 @@ def editMedication(pharmacy_id, medication_id):
         if request.form['price']:
             editedMedication.price = request.form['price']
         if request.form['pharmacy']:
-            editedMedication.pharmacy = request.form['pharmacy']
+            editedMedication.pharmacy_id = request.form['pharmacy']
         session.add(editedMedication)
         session.commit()
         flash("Medication updated!", 'success')
@@ -381,7 +381,7 @@ def getUserID(email):
     try:
         user = session.query(User).filter_by(email=email).one()
         return user.id
-    except:
+    except ImportError:
         return None
 
 
@@ -445,9 +445,9 @@ def showMedicationJSON():
     '/api/v1/pharmacies/<int:pharmacy_id>/medication/<int:medication_id>/JSON')
 def MedicationJSON(pharmacy_id, medication_id):
     """Returns JSON of selected medication in pharmacy"""
-    Medication = session.query(
+    med = session.query(
         Medication).filter_by(id=medication_id).one()
-    return jsonify(Medication=Medication.serialize)
+    return jsonify(med=med.serialize)
 
 
 @app.route('/api/v1/pharmacies/JSON')

@@ -12,12 +12,13 @@
 			<form method="post">
 				<div class="form-group">
 					<label for="name">Name:</label>
-					<input type ="text" maxlength="50" class="form-control" name="name" placeholder="Name of the pharmacy">
+					<input type ="text" maxlength="50" class="form-control" name="name" placeholder="Name of the pharmacy" required>
                     <div style="margin-top: 1rem">
                         <button type="submit" class="btn btn-success" id="submit" type="submit">
                         	<span class="glyphicon glyphicon-glass" aria-hidden="true"></span>
 								Create
 						</button>
+						</form>
                         <button class="btn btn-default delete">
                             <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
                             <a href = "{{ url_for('showHome') }}">
@@ -26,7 +27,7 @@
                         </button>
                     </div>
 				</div>
-			</form>
+
 		</div>
 	</div>
 </div>

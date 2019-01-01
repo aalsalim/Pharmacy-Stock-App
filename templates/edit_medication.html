@@ -12,7 +12,7 @@
 			<form method = "post">
 				<div class="form-group">
 					<label for="name">Name:</label>
-					<input type ="text" maxlength="50" class="form-control" name="name" value="{{ medication.name }}">
+					<input type ="text" maxlength="50" class="form-control" name="name" value="{{ medication.name }}" required>
 					<label for="description">Description:</label>
 					<textarea class="form-control" maxlength="250" rows="3" name="description">{{ medication.description }}
 					</textarea>
@@ -25,6 +25,7 @@
 					{% include "pharmacy_form_list.html" %}
 					<button type="submit" class="btn btn-success" id="submit" type="submit">
 					<span class="glyphicon glyphicon-glass" aria-hidden="true"></span>Update</button>
+					</form>
 					<button class="btn btn-default delete">
 						<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
 						<a href = "{{ url_for('showHome') }}">
@@ -32,7 +33,6 @@
 						</a>
 					</button>
 				</div>
-			</form>
 		</div>
 	</div>
 </div>

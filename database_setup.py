@@ -43,7 +43,7 @@ class Medication(Base):
 
     pharmacy_id = Column(Integer, ForeignKey('pharmacy.id'))
     pharmacy = relationship(
-        "Pharmacy", backref=backref("medication", cascade="all, delete"))
+        "Pharmacy", backref=backref("medications", cascade="all, delete"))
 
     user_id = Column(Integer, ForeignKey('user.id'))
     user = relationship(User)
